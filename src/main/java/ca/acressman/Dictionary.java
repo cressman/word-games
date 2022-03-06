@@ -10,10 +10,11 @@ import java.util.logging.Logger;
 public class Dictionary {
     private static final Logger LOG = Logger.getLogger(Dictionary.class.getName());
     private final List<char[]> words;
+    private final String fileName;
 
     public Dictionary(Properties props) {
         // get dictionary choice from properties and load it.
-        String fileName = props.getProperty("dictionary");
+        fileName = props.getProperty("dictionary");
         if (fileName == null) {
             throw new RuntimeException("No dictionary specified in properties");
         }
@@ -28,5 +29,13 @@ public class Dictionary {
 
     public List<char[]> getWords() {
         return words;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public int size() {
+        return words.size();
     }
 }
